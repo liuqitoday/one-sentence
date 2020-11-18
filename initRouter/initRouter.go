@@ -8,7 +8,8 @@ import (
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
 	router.LoadHTMLGlob("template/**")
-	router.Static("/statics","./statics")
-	router.GET("/", handler.Index)
+	group := router.Group("/sentence")
+	group.Static("/statics","./statics")
+	group.GET("/", handler.Index)
 	return router
 }
